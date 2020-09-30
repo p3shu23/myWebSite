@@ -1,0 +1,51 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+
+var picList = [ "pictures/slide1.jpg", "pictures/slide2.jpg", "pictures/slide3.jpg", "pictures/slide4.jpg", "pictures/slide5.jpg", "pictures/slide6.jpg","pictures/slide7.jpg"];
+var clipList= ["sounds/captain.mp3", "sounds/blackwidow.mp3", "sounds/hulk.mp3", "sounds/ironman.mp3", "sounds/thor.mp3", "sounds/loki.mp3", "sounds/starlord.mp3"];
+var number = 0;
+function startShow()
+
+{
+ 
+ var pic= document.getElementById("picFrame");
+ var clip= document.getElementById("myAudio");
+
+    pic.src= picList[number];
+    clip.src= clipList[number];
+    clip.play()
+  number= number+1;
+  
+  if (number > 6)
+  {
+    
+    number=0;
+    }
+      
+}
+
+</script>
+
+</head>
+<body>
+<center> 
+<h1> JavaScript Tester </h1>
+
+<img id= "picFrame" src="pictures/slide0.jpeg" width="300"/> 
+    <audio id= "myAudio"> </audio>
+<br/>   
+<br/>
+
+<input type="button" value="Click Me" onClick="startShow()">
+    
+
+ <h3><a href="index.html">Click here to return to homepage</a></h3>
+
+</center>
+</body>
+</html>
+
+    
+    
