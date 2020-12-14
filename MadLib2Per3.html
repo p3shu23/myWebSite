@@ -1,0 +1,104 @@
+<html>
+<head> 
+<script language="JavaScript">
+
+var partsOfSpeech = ["Please enter a female Name. ", "Please enter a sense.", "Please enter a store.", "Please enter a decoration.", "Please enter a object.", "Please enter a place.", "Please enter a transportation.", "Please enter a emotion.", "Please enter a object.", "Please enter a location."];
+    
+var answers = new Array(partsOfSpeech.length);
+    
+var story = ["A florist "," was walking down the road. She "," around the street and said: 'I am hungry!' Fortunately, there was a "," nearby so she went inside. The place was decorated with"," which they loved. They sat down and looked around the place. It was crowded with"," running all over the place. She did not commotion and left to go to ",". She took a  "," and met a young boy. The young girl told her, 'You are allergic to flowers.' She looked at the young boy, very", " and left him. She walked to her destination and kicked a", " The object travelled very far and ended up all the way in ", " ."];
+    
+var count = 0;
+
+function prompts()
+{
+	// if this is the start, display the textbox and hide the story. 
+	// then display the first element of partsOfSpeech in the textbox. 
+
+    document.getElementById("userEnter").style.visibility="visible";
+    document.getElementById("story").style.visibility="hidden";
+    document.getElementById("response").value= partsOfSpeech[count];
+}
+
+
+
+function getWords()
+{
+    
+   var wordBox= document.getElementById("response");
+    answers[count]= wordBox.value;
+    
+    count++;//increase count
+    
+    //test if there is another part of speech
+    
+   if(count<partsOfSpeech.length)//there is another prompt coming
+  {
+    prompts();
+   }
+    
+    else// done entering the words. display the story
+    {
+      count=0; 
+      document.getElementById("story").innerHTML=displayStory();
+    }    
+}
+
+function displayStory()
+{
+	var answer = "";
+	
+    var i=0;
+    
+   // answer=answer+story[0];
+   //    answer=answer+answers[0]
+	
+	// loop to stitch elements of story with elements of answers. 
+	
+	for ( i = 0; i< answers.length; i++)
+	{
+	answer=answer+ story[i];
+    answer=answer+ answers[i];
+	}
+    
+    if(i<story.length)
+    {
+        answer=answer+ story[i];
+    }
+    document.getElementById("story").style.visibility="visible";
+    document.getElementById("userEnter").style.visibility="hidden";
+        
+    // if there's one more element in story than answers, then add the last element of answers
+
+	// Make the story div visible, and the userEnter div hidden.		
+
+	// return the variable answer.
+    
+    return answer;//passes back the variable answer ships back the prompt
+}
+
+    //div=division on your page, you can add pictures, texts, etc
+</script>
+    
+</head>
+<body>
+<center> 
+    
+<h1>MadLib!</h1>
+<input id="daButton" type="button" value="Start" onClick="prompts()"/>
+</center>
+    
+<div id="userEnter" style="position:absolute; left:200; top: 100; visibility:hidden;">
+   <p> <input type = "text" id="response" value="" onfocusout="getWords()"/></p>
+</div>
+
+<div id="story" style="position:absolute; overflow:scroll; top:300; left:200; width:400; height: 200; visibility:hidden">
+</div>
+<br>
+    <br>
+    <br><br><br><br>
+    <center>Want an automatic story? Use this MadLib to quickly recieve your amusing story!</center>
+    
+    <center><h3>Click here to <a href="index.html"> return to my home page. </a></h3></center>
+</body>
+</html>
